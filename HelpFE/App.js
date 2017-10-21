@@ -25,6 +25,7 @@ export default class App extends Component<{}> {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Help.
+          <script src="node_modules/SendBird.min.js"></script>
         </Text>
         <Text style={styles.instructions}>
           To get started, edit App.js
