@@ -1,6 +1,8 @@
 import React from 'react';
-import Chat from './screens/chat.js'
+import Test from './screens/test.js'
 
 const App = () => {
-  return <Chat />;
+  return <Test />;
 };
+
+export default App;
