@@ -9,6 +9,9 @@
 	"dependencies": {
 		"react": "16.0.0-beta.5",
 		"react-native": "0.49.3",
+		"react-native-fontawesome": "^5.7.0",
+		"react-native-maps": "^0.17.1",
+		"react-native-vector-icons": "^4.4.2",
 		"sendbird": "^3.0.38"
 	},
 	"devDependencies": {
