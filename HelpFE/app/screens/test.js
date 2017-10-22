@@ -42,8 +42,14 @@ class Thisismap extends Component {
      justifyContent: 'flex-end',
      alignItems: 'stretch',
   },
-  navTitle: {
-    backgroundColor: 'red',
+  navBar: {
+    flexDirection: 'row',
+    position: 'absolute',
+    justifyContent:'flex-start',
+    top: 0,
+    height: 50,
+    width: width,
+    backgroundColor: '#fcfcfc',
   },
   map: {
      left: 0,
@@ -91,13 +97,22 @@ class Thisismap extends Component {
     return (
       <View style={styles.container}>
 
-        <NavigatorIOS
-          initialRoute={{
-            component: MyScene,
-            title: 'Help.',
-          }}
-          style={{flex: 1}}
-        />
+        <View style= {styles.navBar}>
+
+          <Image
+                    style={{width: 55, height: 25, top: 10, alignItems: 'flex-end', alignSelf: 'center'}}
+                    source={{uri: 'https://i.imgur.com/iQCK84M.png'}}
+          />
+          <View style={{width: 55, height: 25, top: 10, alignItems:'flex-end', alignSelf: 'center'}}>
+          </View>
+          <View style={{width: 55, height: 25, top: 10, alignItems:'flex-end', alignSelf: 'center'}}>
+          </View>
+          <Image
+                    style={{width: 55, height: 25, top: 10, alignItems: 'flex-end', alignSelf: 'center'}}
+                    source={{uri: 'https://i.imgur.com/6mK9NPz.png'}}
+          />
+
+        </View>
 
 
           <MapView
@@ -117,12 +132,12 @@ class Thisismap extends Component {
 
               <View>
                 <Modal
-                    animationType="slide"
+                    animationType="none"
                     transparent={true}
                     visible={this.state.modalVisible}
                     onRequestClose={() => {alert("Modal has been closed.")}}
                     >
-              <View style={{marginTop: 90, marginLeft: 270}}>
+              <View style={{marginTop: 80, marginLeft: 270}}>
               <View>
                 <Text style={{fontSize:12, fontWeight: 'bold'}}>Salvation Army</Text>
 
@@ -174,9 +189,25 @@ class Thisismap extends Component {
               </View>
           </MapView.Marker>
 
+          <MapView.Marker
+            coordinate={{longitude: -121.892796, latitude: 37.327639 }}>
+              <View>
+                  <Image
+                    style={{width: 25, height: 25}}
+                    source={{uri: 'https://i.imgur.com/IWkx62m.png'}}
+                  />
+              </View>
+          </MapView.Marker>
 
-
-
+          <MapView.Marker
+            coordinate={{longitude: -121.915112, latitude: 37.324807 }}>
+              <View>
+                  <Image
+                    style={{width: 25, height: 25}}
+                    source={{uri: 'https://i.imgur.com/IWkx62m.png'}}
+                  />
+              </View>
+          </MapView.Marker>
 
 
           <MapView.Marker
