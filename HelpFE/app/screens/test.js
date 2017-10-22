@@ -9,7 +9,10 @@ import {
   Dimensions,
   Text,
   Image,
-  NavigatorIOS
+  TextInput,
+  NavigatorIOS,
+  Platform,
+  Switch,
 } from 'react-native'
 import MapView from 'react-native-maps'
 
@@ -23,10 +26,15 @@ const ASPECT_RATIO = width / height
 const LATITUDE_DELTA = 0.032
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
+
+
+
 class Thisismap extends Component {
 
   state = {
     modalVisible: false,
+    titleText: "Ask for Help.",
+    text: 'Type to chat with women around you!'
   }
 
   setModalVisible(visible) {
@@ -50,6 +58,13 @@ class Thisismap extends Component {
     height: 50,
     width: width,
     backgroundColor: '#fcfcfc',
+  },
+  baseText: {
+    fontFamily: 'Cochin',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   map: {
      left: 0,
@@ -111,6 +126,13 @@ class Thisismap extends Component {
                     style={{width: 55, height: 25, top: 10, alignItems: 'flex-end', alignSelf: 'center'}}
                     source={{uri: 'https://i.imgur.com/6mK9NPz.png'}}
           />
+          <Image
+                    style={{width: 55, height: 50, top: 5, alignItems: 'flex-end', alignSelf: 'center'}}
+                    source={{uri: 'https://i.imgur.com/FpmCsEN.png'}}
+          />
+
+
+
 
         </View>
 
@@ -139,12 +161,12 @@ class Thisismap extends Component {
                     >
               <View style={{marginTop: 80, marginLeft: 270}}>
               <View>
-                <Text style={{fontSize:12, fontWeight: 'bold'}}>Salvation Army</Text>
+                <Text style={{fontSize:12, fontWeight: 'bold', color: '#0069fc'}}>Salvation Army</Text>
 
               <TouchableHighlight onPress={() => {
               this.setModalVisible(!this.state.modalVisible)
               }}>
-                <Text style={{fontSize:8}}>Hide Address</Text>
+                <Text style={{fontSize:8, color: 'black'}}>Hide Address</Text>
               </TouchableHighlight>
 
           </View>
@@ -219,12 +241,33 @@ class Thisismap extends Component {
         </MapView>
 
 
+        <View>
+          <Text style={styles.baseText}>
+          <Text style={styles.titleText} onPress={this.onPressTitle}>
+            {this.state.titleText}{'\n'}{'\n'}
+          </Text>
+          <TextInput
+            style={{height: 40, width: 400,  borderColor: 'gray', borderWidth: 1}}
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.text}
+          />
+        </Text>
+      </View>
+
+
 
 
       </View>
     );
   }
 }
+
+
+
+
+
+
+
 
 class MyScene extends Component {
   static propTypes = {
