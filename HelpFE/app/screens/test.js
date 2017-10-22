@@ -63,8 +63,9 @@ class Thisismap extends Component {
     fontFamily: 'Cochin',
   },
   titleText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
+    fontFamily: 'Futura',
   },
   map: {
      left: 0,
@@ -240,19 +241,18 @@ class Thisismap extends Component {
           </MapView.Marker>
         </MapView>
 
-
-        <View>
-          <Text style={styles.baseText}>
-          <Text style={styles.titleText} onPress={this.onPressTitle}>
-            {this.state.titleText}{'\n'}{'\n'}
+        <View style={{margin: 10}}>
+            <Text style={styles.baseText}>
+            <Text style={styles.titleText} onPress={this.onPressTitle}>
+              {this.state.titleText}{'\n'}{'\n'}
+            </Text>
+            <TextInput
+              style={{height: 40, width: 400,  borderColor: 'gray', borderWidth: 1}}
+              onChangeText={(text) => this.setState({text})}
+              value={this.state.text}
+            />
           </Text>
-          <TextInput
-            style={{height: 40, width: 400,  borderColor: 'gray', borderWidth: 1}}
-            onChangeText={(text) => this.setState({text})}
-            value={this.state.text}
-          />
-        </Text>
-      </View>
+        </View>
 
 
 
