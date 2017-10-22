@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import {
   View,
+   Modal,
+   TouchableHighlight,
   StyleSheet,
   Dimensions,
   Text,
@@ -23,7 +25,13 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
 class Thisismap extends Component {
 
+  state = {
+    modalVisible: false,
+  }
 
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
 
   render() {
@@ -118,11 +126,40 @@ class Thisismap extends Component {
           </MapView.Marker>
           <MapView.Marker
             coordinate={{longitude: -121.919007, latitude: 37.336594 }}>
+
+
               <View>
+              <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {alert("Modal has been closed.")}}
+          >
+         <View style={{marginTop: 90, marginLeft: 20}}>
+          <View>
+            <Text style={{fontSize:12, fontWeight: 'bold'}}>Junior Achievement</Text>
+
+            <TouchableHighlight onPress={() => {
+              this.setModalVisible(!this.state.modalVisible)
+            }}>
+              <Text style={{fontSize:8}}>Hide Address</Text>
+            </TouchableHighlight>
+
+          </View>
+         </View>
+        </Modal>
+
+
+              <TouchableHighlight onPress={() => {
+                this.setModalVisible(!this.state.modalVisible)
+                }}>
                   <Image
                     style={{width: 15, height: 15}}
                     source={{uri: 'https://i.imgur.com/zjV3YIL.png'}}
                   />
+
+                </TouchableHighlight>
+
               </View>
           </MapView.Marker>
 
@@ -165,6 +202,9 @@ class Thisismap extends Component {
                   </View>
           </MapView.Marker>
         </MapView>
+
+
+
 
       </View>
     );
