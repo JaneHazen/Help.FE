@@ -42,6 +42,9 @@ class Thisismap extends Component {
      justifyContent: 'flex-end',
      alignItems: 'stretch',
   },
+  navTitle: {
+    backgroundColor: 'red',
+  },
   map: {
      left: 0,
      right: 0,
@@ -89,12 +92,12 @@ class Thisismap extends Component {
       <View style={styles.container}>
 
         <NavigatorIOS
-        initialRoute={{
-          component: MyScene,
-          title: 'Help.',
-        }}
-        style={{flex: 1}}
-      />
+          initialRoute={{
+            component: MyScene,
+            title: 'Help.',
+          }}
+          style={{flex: 1}}
+        />
 
 
           <MapView
@@ -106,15 +109,50 @@ class Thisismap extends Component {
             longitudeDelta: LONGITUDE_DELTA,
           }}
           >
+
+
           <MapView.Marker
             coordinate={{longitude: -121.892107, latitude: 37.343341 }}>
+
+
               <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {alert("Modal has been closed.")}}
+                    >
+              <View style={{marginTop: 90, marginLeft: 270}}>
+              <View>
+                <Text style={{fontSize:12, fontWeight: 'bold'}}>Salvation Army</Text>
+
+              <TouchableHighlight onPress={() => {
+              this.setModalVisible(!this.state.modalVisible)
+              }}>
+                <Text style={{fontSize:8}}>Hide Address</Text>
+              </TouchableHighlight>
+
+          </View>
+         </View>
+        </Modal>
+
+
+                  <TouchableHighlight onPress={() => {
+                        this.setModalVisible(!this.state.modalVisible)
+                        }}>
                   <Image
-                    style={{width: 15, height: 15}}
-                    source={{uri: 'https://i.imgur.com/zjV3YIL.png'}}
-                  />
-              </View>
-          </MapView.Marker>
+                      style={{width: 15, height: 15}}
+                      source={{uri: 'https://i.imgur.com/zjV3YIL.png'}}
+                      />
+
+                  </TouchableHighlight>
+
+                </View>
+            </MapView.Marker>
+
+
+
+
           <MapView.Marker
             coordinate={{longitude: -121.907960, latitude: 37.320337 }}>
               <View>
@@ -124,74 +162,20 @@ class Thisismap extends Component {
                   />
               </View>
           </MapView.Marker>
+
+
           <MapView.Marker
             coordinate={{longitude: -121.919007, latitude: 37.336594 }}>
-
-
               <View>
-              <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
-          >
-         <View style={{marginTop: 90, marginLeft: 20}}>
-          <View>
-            <Text style={{fontSize:12, fontWeight: 'bold'}}>Junior Achievement</Text>
-
-            <TouchableHighlight onPress={() => {
-              this.setModalVisible(!this.state.modalVisible)
-            }}>
-              <Text style={{fontSize:8}}>Hide Address</Text>
-            </TouchableHighlight>
-
-          </View>
-         </View>
-        </Modal>
-
-
-              <TouchableHighlight onPress={() => {
-                this.setModalVisible(!this.state.modalVisible)
-                }}>
                   <Image
                     style={{width: 15, height: 15}}
                     source={{uri: 'https://i.imgur.com/zjV3YIL.png'}}
                   />
-
-                </TouchableHighlight>
-
               </View>
           </MapView.Marker>
 
 
 
-          <MapView.Marker
-            coordinate={{longitude: -121.9, latitude: 37.3 }}>
-              <View>
-                  <Image
-                    style={{width: 25, height: 25}}
-                    source={{uri: 'https://i.imgur.com/IWkx62m.png'}}
-                  />
-              </View>
-          </MapView.Marker>
-          <MapView.Marker
-            coordinate={{longitude: -121.897602, latitude: 37.325080 }}>
-              <View>
-                  <Image
-                    style={{width: 25, height: 25}}
-                    source={{uri: 'https://i.imgur.com/IWkx62m.png'}}
-                  />
-              </View>
-          </MapView.Marker>
-          <MapView.Marker
-            coordinate={{longitude: -121.910648, latitude: 37.341874 }}>
-              <View>
-                  <Image
-                    style={{width: 25, height: 25}}
-                    source={{uri: 'https://i.imgur.com/IWkx62m.png'}}
-                  />
-              </View>
-          </MapView.Marker>
 
 
 
@@ -213,20 +197,19 @@ class Thisismap extends Component {
 
 class MyScene extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
     navigator: PropTypes.object.isRequired,
   }
 
-  _onForward = () => {
-    this.props.navigator.push({
-      title: 'Scene ' + nextIndex,
-    });
-  }
+  // _onForward = () => {
+  //   this.props.navigator.push({
+  //     title: 'Scene ' + nextIndex,
+  //   });
+  // }
 
   render() {
     return (
       <View>
-        <Text>Current Scene: { this.props.title }</Text>
+        <Text>Current Scene: { "Help." }</Text>
           <Text>Tap me to load the next scene</Text>
       </View>
     )
